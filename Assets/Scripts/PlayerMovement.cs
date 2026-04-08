@@ -5,6 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     new Rigidbody rigidbody;
     private float horizontalInput;
+    private float forwardInput;
+    private int turnSpeed = 35;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Vertical");
-        rigidbody.AddForce(Vector3.forward * horizontalInput, ForceMode.Impulse);
+        forwardInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        rigidbody.AddForce(Vector3.forward * forwardInput, ForceMode.Impulse);
+        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
     }
 }
