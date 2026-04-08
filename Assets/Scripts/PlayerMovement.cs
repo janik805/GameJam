@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
     new Rigidbody rigidbody;
     private float horizontalInput;
     private float forwardInput;
-    private int turnSpeed = 35;
+    private int turnSpeed = 70;
+    private int speed = 10;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,7 +21,12 @@ public class PlayerMovement : MonoBehaviour
     {
         forwardInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        rigidbody.AddForce(Vector3.forward * forwardInput, ForceMode.Impulse);
-        transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+        rigidbody.AddForce(-1 * transform.right * speed * forwardInput, ForceMode.Impulse);
+        if (forwardInput < 0)
+        {
+            transform.Rotate(Vector3.down, Time.deltaTime * turnSpeed * horizontalInput);
+        } else {
+            transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+        }
     }
 }
