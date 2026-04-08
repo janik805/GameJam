@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,12 +7,14 @@ public class PlayerMovement : MonoBehaviour
     private float forwardInput;
     private int turnSpeed = 70;
     private int speed = 10;
+    private Camera playerCam;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        playerCam = Camera.main;
     }
 
     // Update is called once per frame
@@ -21,12 +22,22 @@ public class PlayerMovement : MonoBehaviour
     {
         forwardInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
-        rigidbody.AddForce(-1 * transform.right * speed * forwardInput, ForceMode.Impulse);
-        if (forwardInput < 0)
+        rigidbody.AddForce(transform.right * (speed * horizontalInput), ForceMode.Force);
+        rigidbody.AddForce(transform.forward * (speed * forwardInput), ForceMode.Force);
+        Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            transform.Rotate(Vector3.down, Time.deltaTime * turnSpeed * horizontalInput);
-        } else {
-            transform.Rotate(Vector3.up, Time.deltaTime * turnSpeed * horizontalInput);
+            if (hit.collider.gameObject.name == "Plane")
+            {
+                Vector3 direction = hit.point - transform.position;
+                direction.y = 0f;
+
+                if (direction != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(direction);
+                }
+            }
         }
     }
 }
