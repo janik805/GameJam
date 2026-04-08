@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            if (hit.collider.gameObject.name == "Plane")
+            if (hit.collider.gameObject.Equals(plane))
             {
                 Vector3 direction = hit.point - transform.position;
                 direction.y = 0f;
