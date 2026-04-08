@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &186432270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7647465844116859458, guid: 301ddaaf26bf3fa4db47119dac39ef20, type: 3}
+  m_PrefabInstance: {fileID: 1098615545}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &228035158
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5145271ea19dcc14882782172c096a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  plane: {fileID: 186432270}
 --- !u!4 &228035160
 Transform:
   m_ObjectHideFlags: 0
