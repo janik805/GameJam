@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float xGrenze;
     private float zGrenze;
     private Camera playerCam;
+    private Renderer renderer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidbody = GetComponent<Rigidbody>();
         playerCam = Camera.main;
+        renderer = plane.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
@@ -43,34 +45,33 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
         CheckLimit();
     }
 
     // Checks that player can't go out of Bounds
     private void CheckLimit()
     {
-        if (plane!=null)
+        // Get edge of ground plane
+        xGrenze = renderer.bounds.size.x / 2;
+        zGrenze = renderer.bounds.size.z / 2;
+
+        if (transform.position.x >= xGrenze)
         {
-            // Get edge of ground plane
-            Renderer renderer = plane.GetComponent<Renderer>();
-            xGrenze = renderer.bounds.size.x / 2;
-            zGrenze = renderer.bounds.size.z / 2;
+            transform.position = transform.position - new Vector3(1, 0, 0);
+        }
+        else if (Math.Abs(transform.position.x) >= xGrenze)
+        {
+            transform.position = transform.position + new Vector3(1, 0, 0);
+        }
 
-            if  (transform.position.x >= xGrenze)
-            {
-                transform.position = transform.position - new Vector3(1, 0 , 0);
-            } else if  (Math.Abs(transform.position.x) >= xGrenze)
-            {
-                transform.position = transform.position + new Vector3(1, 0 , 0);
-            }
-
-            if  (transform.position.z >= zGrenze)
-            {
-                transform.position = transform.position - new Vector3(0, 0 , 1);
-            } else if  (Math.Abs(transform.position.z) >= zGrenze)
-            {
-                transform.position = transform.position + new Vector3(0, 0 , 1);
-            }
+        if (transform.position.z >= zGrenze)
+        {
+            transform.position = transform.position - new Vector3(0, 0, 1);
+        }
+        else if (Math.Abs(transform.position.z) >= zGrenze)
+        {
+            transform.position = transform.position + new Vector3(0, 0, 1);
         }
     }
 }
