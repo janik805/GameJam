@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654dfcd6b44490344958c184486b288f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
+  player: {fileID: 228035158}
 --- !u!1001 &394802175
 PrefabInstance:
   m_ObjectHideFlags: 0
