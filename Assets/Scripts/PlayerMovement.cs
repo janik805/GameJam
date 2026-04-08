@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     new Rigidbody rigidbody;
     private float horizontalInput;
     private float forwardInput;
-    private int speed = 500;
+    private int speed = 200;
     private float xGrenze;
     private float zGrenze;
     private Camera playerCam;
