@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         AnimatePlayer();
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, 1 << 0))
         {
             if (hit.collider.gameObject.Equals(plane))
             {
