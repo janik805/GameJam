@@ -55,7 +55,7 @@ public class PlayerStatsManager : MonoBehaviour
         this.coins -= amount;
     }
     
-    public void Takedamage(int damage)
+    public void TakeDamage(int damage)
     {
         health -= damage;
     }
