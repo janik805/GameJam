@@ -31,13 +31,7 @@ public class PlayerMovement : MonoBehaviour
         forwardInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if(forwardInput > 0) 
-        {
-            playerAnim.SetFloat("speed", 1);
-        } else 
-        {
-            playerAnim.SetFloat("speed", 0);
-        }
+        AnimatePlayer();
 
         rigidbody.AddForce(transform.right * (speed * horizontalInput), ForceMode.Force);
         rigidbody.AddForce(transform.forward * (speed * forwardInput), ForceMode.Force);
@@ -87,5 +81,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position = playerPos;
+    }
+
+    private void AnimatePlayer() 
+    {
+        if(Input.GetMouseButtonDown(0)) {
+            playerAnim.SetTrigger("attacking");
+        }
+        if(forwardInput > 0) 
+        {
+            playerAnim.SetFloat("speed", 1);
+        } else 
+        {
+            playerAnim.SetFloat("speed", 0);
+        }
+
     }
 }
