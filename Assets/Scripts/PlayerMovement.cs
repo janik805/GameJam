@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float xGrenze;
     private float zGrenze;
     private Camera playerCam;
-    private Renderer renderer;
+    private new Renderer renderer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,7 +56,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-
         CheckLimit();
     }
 
@@ -66,23 +65,27 @@ public class PlayerMovement : MonoBehaviour
         // Get edge of ground plane
         xGrenze = renderer.bounds.size.x / 2;
         zGrenze = renderer.bounds.size.z / 2;
-
+        Vector3 playerPos = transform.position;
+        // Checks if player is out of bounds on the x-Axis
         if (transform.position.x >= xGrenze)
-        {
-            transform.position = transform.position - new Vector3(1, 0, 0);
+        {   
+            playerPos.x = xGrenze;
         }
         else if (Math.Abs(transform.position.x) >= xGrenze)
         {
-            transform.position = transform.position + new Vector3(1, 0, 0);
+            playerPos.x = -xGrenze;
         }
 
+        // Checks  if player is out of bounds on the y-Axis
         if (transform.position.z >= zGrenze)
         {
-            transform.position = transform.position - new Vector3(0, 0, 1);
+            playerPos.z = zGrenze;
         }
         else if (Math.Abs(transform.position.z) >= zGrenze)
         {
-            transform.position = transform.position + new Vector3(0, 0, 1);
+            playerPos.z = -zGrenze;
         }
+
+        transform.position = playerPos;
     }
 }
