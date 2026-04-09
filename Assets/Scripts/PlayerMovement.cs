@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnim;
     private float horizontalInput;
     private float forwardInput;
-    private int speed = 200;
+    private int speed = 350;
     private float xGrenze;
     private float zGrenze;
     private Camera playerCam;
@@ -28,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         AnimatePlayer();
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
 
