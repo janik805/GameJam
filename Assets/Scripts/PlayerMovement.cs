@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public GameObject plane;
     new Rigidbody rigidbody;
+    private Animator playerAnim;
     private float horizontalInput;
     private float forwardInput;
     private int speed = 200;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        playerAnim = GetComponentInChildren<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         playerCam = Camera.main;
         renderer = plane.GetComponent<Renderer>();
@@ -28,6 +30,15 @@ public class PlayerMovement : MonoBehaviour
     {
         forwardInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
+
+        if(forwardInput > 0) 
+        {
+            playerAnim.SetFloat("speed", 1);
+        } else 
+        {
+            playerAnim.SetFloat("speed", 0);
+        }
+
         rigidbody.AddForce(transform.right * (speed * horizontalInput), ForceMode.Force);
         rigidbody.AddForce(transform.forward * (speed * forwardInput), ForceMode.Force);
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
