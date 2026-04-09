@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void AnimatePlayer() 
     {
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetKeyDown(KeyCode.Space)) {
             playerAnim.SetTrigger("attacking");
         }
         if(forwardInput > 0) 
