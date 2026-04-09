@@ -3,7 +3,7 @@ using UnityEngine;
 public class SkeletonController : MonoBehaviour, EnemyInterface
 {
     private GameObject player;
-    private Animator animation;
+    private new Animator animation;
     private new Rigidbody rigidbody;
 
     private float speed;
