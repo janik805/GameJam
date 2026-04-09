@@ -4,11 +4,11 @@ public class PlayerStatsManager : MonoBehaviour
 {
     public static PlayerStatsManager Instance;
     [Header("Player Stats")]
-    public  int health;
+    [SerializeField] private  int health;
 
-    public int speed;
+    [SerializeField] private int speed;
 
-    public int coins;
+    [SerializeField] private int coins;
 
     private void Awake()
     {

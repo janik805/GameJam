@@ -9,8 +9,23 @@ public class WorldStatsManager : MonoBehaviour
     
     private int CoinsSpawned = 0;
     
-    public int MaxCoinsSpawned;
+    [SerializeField] private int MaxCoinsSpawned;
+    
+    public GameObject plane;
+    private float xGrenze;
+    private float zGrenze;
+    private new Renderer renderer;
 
+    public float getXGrenze()
+    {
+        return xGrenze;
+    }
+
+    public float getZGrenze()
+    {
+        return zGrenze;
+    }
+    
     public int getCoinsSpawned()
     {
         return CoinsSpawned;
@@ -38,5 +53,12 @@ public class WorldStatsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        renderer = plane.GetComponent<Renderer>();
+        xGrenze = renderer.bounds.size.x / 2;
+        zGrenze = renderer.bounds.size.z / 2;
     }
 }

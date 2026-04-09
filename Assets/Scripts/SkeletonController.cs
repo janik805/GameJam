@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class SkeletonController : MonoBehaviour, EnemyInterface
+public class SkeletonController : Enemy
 {
     private GameObject player;
     private new Animator animation;
@@ -13,8 +14,9 @@ public class SkeletonController : MonoBehaviour, EnemyInterface
 
     private float speed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    new void Start()
     {   
+        base.Start();
         contact = false;
         speed = 25;
         player = GameObject.FindWithTag("Player");
@@ -23,8 +25,9 @@ public class SkeletonController : MonoBehaviour, EnemyInterface
         InvokeRepeating("Attack", 0f, 1f);
     }
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
+        base.Update();
         contact = Vector3.Distance(player.transform.position, transform.position) < attackRange;
     }
 
@@ -33,6 +36,7 @@ public class SkeletonController : MonoBehaviour, EnemyInterface
         Walk();
     }
 
+    override 
     public void Walk() 
     {
         Vector3 playerPosition = player.transform.position;

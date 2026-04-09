@@ -5,19 +5,8 @@ using Random = UnityEngine.Random;
 public class CoinSpawner : MonoBehaviour
 {
     public GameObject Coin;
-    public GameObject plane;
-    private float xGrenze;
-    private float zGrenze;
-    private new Renderer renderer;
     private float timer;
     private float waitTime;
-
-    void Start()
-    {
-        renderer = plane.GetComponent<Renderer>();
-        xGrenze = renderer.bounds.size.x / 2;
-        zGrenze = renderer.bounds.size.z / 2;
-    }
 
     void Update()
     {
@@ -32,6 +21,9 @@ public class CoinSpawner : MonoBehaviour
 
     public void SpawnCoin()
     {
+        float xGrenze = WorldStatsManager.Instance.getXGrenze();
+        float zGrenze = WorldStatsManager.Instance.getZGrenze();
+        
         if (WorldStatsManager.Instance.getCoinsSpawned() >= WorldStatsManager.Instance.getMaxCoinsSpawned()) return;
         float spawnpointX = Random.Range(-xGrenze, xGrenze);
         float spawnpointZ = Random.Range(-zGrenze, zGrenze);
