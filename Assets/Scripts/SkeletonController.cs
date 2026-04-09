@@ -59,10 +59,7 @@ public class SkeletonController : Enemy
     IEnumerator WaitForSlashCoroutine() 
     {
         yield return new WaitForSeconds(0.5f);
-        if(contact) 
-        {
         PlayerStatsManager.Instance.TakeDamage(damage);
-        }
         hitParticle.Play();
     }
 }
