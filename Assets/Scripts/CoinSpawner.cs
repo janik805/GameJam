@@ -8,7 +8,7 @@ public class CoinSpawner : MonoBehaviour
     public GameObject plane;
     private float xGrenze;
     private float zGrenze;
-    private Renderer renderer;
+    private new Renderer renderer;
 
     void Start()
     {

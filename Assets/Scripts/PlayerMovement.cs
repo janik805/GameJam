@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float xGrenze;
     private float zGrenze;
     private Camera playerCam;
-    private Renderer renderer;
+    private new Renderer renderer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,13 +31,7 @@ public class PlayerMovement : MonoBehaviour
         forwardInput = Input.GetAxis("Vertical");
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if(forwardInput > 0) 
-        {
-            playerAnim.SetFloat("speed", 1);
-        } else 
-        {
-            playerAnim.SetFloat("speed", 0);
-        }
+        AnimatePlayer();
 
         rigidbody.AddForce(transform.right * (speed * horizontalInput), ForceMode.Force);
         rigidbody.AddForce(transform.forward * (speed * forwardInput), ForceMode.Force);
@@ -56,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-
         CheckLimit();
     }
 
@@ -66,23 +59,42 @@ public class PlayerMovement : MonoBehaviour
         // Get edge of ground plane
         xGrenze = renderer.bounds.size.x / 2;
         zGrenze = renderer.bounds.size.z / 2;
-
+        Vector3 playerPos = transform.position;
+        // Checks if player is out of bounds on the x-Axis
         if (transform.position.x >= xGrenze)
-        {
-            transform.position = transform.position - new Vector3(1, 0, 0);
+        {   
+            playerPos.x = xGrenze;
         }
         else if (Math.Abs(transform.position.x) >= xGrenze)
         {
-            transform.position = transform.position + new Vector3(1, 0, 0);
+            playerPos.x = -xGrenze;
         }
 
+        // Checks  if player is out of bounds on the y-Axis
         if (transform.position.z >= zGrenze)
         {
-            transform.position = transform.position - new Vector3(0, 0, 1);
+            playerPos.z = zGrenze;
         }
         else if (Math.Abs(transform.position.z) >= zGrenze)
         {
-            transform.position = transform.position + new Vector3(0, 0, 1);
+            playerPos.z = -zGrenze;
         }
+
+        transform.position = playerPos;
+    }
+
+    private void AnimatePlayer() 
+    {
+        if(Input.GetMouseButtonDown(0)) {
+            playerAnim.SetTrigger("attacking");
+        }
+        if(forwardInput > 0) 
+        {
+            playerAnim.SetFloat("speed", 1);
+        } else 
+        {
+            playerAnim.SetFloat("speed", 0);
+        }
+
     }
 }
