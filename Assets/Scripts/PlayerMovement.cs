@@ -88,13 +88,8 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) {
             playerAnim.SetTrigger("attacking");
         }
-        if(forwardInput > 0) 
-        {
-            playerAnim.SetFloat("speed", 1);
-        } else 
-        {
-            playerAnim.SetFloat("speed", 0);
-        }
+        playerAnim.SetFloat("speed", forwardInput);
+        playerAnim.SetFloat("horizontalSpeed", horizontalInput);
 
     }
 }
