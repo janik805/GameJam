@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ControlCoin : MonoBehaviour
 {
+    public ParticleSystem particle;
     private const float RotationSpeed = 75;
 
     // Update is called once per frame
@@ -16,6 +17,8 @@ public class ControlCoin : MonoBehaviour
         {
             PlayerStatsManager.Instance.GiveCoins(1);
             WorldStatsManager.Instance.decreaseCoinsSpawned();
+            particle.Play();
+            particle.transform.parent = null;
             Destroy(gameObject);
         }
     }
