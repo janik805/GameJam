@@ -7,6 +7,7 @@ public class SkeletonController : MonoBehaviour, EnemyInterface
     private GameObject player;
     private new Animator animation;
     private new Rigidbody rigidbody;
+    [SerializeField] private ParticleSystem hitParticle;
     private Boolean contact;
     private int damage = 5;
     private float attackRange = 2.5f;
@@ -55,5 +56,6 @@ public class SkeletonController : MonoBehaviour, EnemyInterface
     {
         yield return new WaitForSeconds(0.5f);
         PlayerStatsManager.Instance.TakeDamage(damage);
+        hitParticle.Play();
     }
 }
