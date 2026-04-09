@@ -49,6 +49,11 @@ public class StatsManager : MonoBehaviour
     {
         this.coins += amount;
     }
+
+    public void TakeCoins(int amount)
+    {
+        this.coins -= amount;
+    }
     
     public void Takedamage(int damage)
     {
