@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator playerAnim;
     private float horizontalInput;
     private float forwardInput;
-    private int speed = 350;
+    private int speed = 35000;
     private float xGrenze;
     private float zGrenze;
     private Camera playerCam;
