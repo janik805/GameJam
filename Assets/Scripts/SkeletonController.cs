@@ -55,7 +55,10 @@ public class SkeletonController : MonoBehaviour, EnemyInterface
     IEnumerator WaitForSlashCoroutine() 
     {
         yield return new WaitForSeconds(0.5f);
+        if(contact) 
+        {
         PlayerStatsManager.Instance.TakeDamage(damage);
+        }
         hitParticle.Play();
     }
 }
