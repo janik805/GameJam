@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class SkeletonController : MonoBehaviour, EnemyInterface
@@ -43,6 +44,16 @@ public class SkeletonController : MonoBehaviour, EnemyInterface
 
     public void Attack()
     {
-        if (contact) PlayerStatsManager.Instance.TakeDamage(damage);
+        if (contact)
+        {
+            animation.SetTrigger("attack");
+            StartCoroutine(WaitForSlashCoroutine());
+        }
+    }
+
+    IEnumerator WaitForSlashCoroutine() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        PlayerStatsManager.Instance.TakeDamage(damage);
     }
 }
