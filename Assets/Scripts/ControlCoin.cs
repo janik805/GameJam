@@ -20,7 +20,7 @@ public class ControlCoin : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            StatsManager.Instance.GiveCoins(1);
+            PlayerStatsManager.Instance.GiveCoins(1);
             Destroy(gameObject);
         }
     }

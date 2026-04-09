@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class StatsManager : MonoBehaviour
+public class PlayerStatsManager : MonoBehaviour
 {
-    public static StatsManager Instance;
+    public static PlayerStatsManager Instance;
     [Header("Player Stats")]
     public  int health;
 
