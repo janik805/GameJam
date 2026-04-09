@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class StatsManager : MonoBehaviour
+public class PlayerStatsManager : MonoBehaviour
 {
-    public static StatsManager Instance;
+    public static PlayerStatsManager Instance;
     [Header("Player Stats")]
     public  int health;
 
@@ -48,6 +48,11 @@ public class StatsManager : MonoBehaviour
     public void GiveCoins(int amount)
     {
         this.coins += amount;
+    }
+
+    public void TakeCoins(int amount)
+    {
+        this.coins -= amount;
     }
     
     public void Takedamage(int damage)
