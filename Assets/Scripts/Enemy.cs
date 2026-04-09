@@ -13,8 +13,8 @@ public abstract class Enemy : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        Destroy(gameObject);
-        waveSpawner.waves[waveSpawner.getCurrentWaveIndex()].enemiesLeft--;
+        //Destroy(gameObject);
+        //waveSpawner.waves[waveSpawner.getCurrentWaveIndex()].enemiesLeft--;
     }
     
     public abstract void Walk();
