@@ -28,13 +28,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        forwardInput = Input.GetAxis("Vertical");
-        horizontalInput = Input.GetAxis("Horizontal");
+
 
         AnimatePlayer();
-
-        rigidbody.AddForce(transform.right * (speed * horizontalInput), ForceMode.Force);
-        rigidbody.AddForce(transform.forward * (speed * forwardInput), ForceMode.Force);
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out RaycastHit hit))
@@ -51,6 +47,14 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         CheckLimit();
+    }
+
+    void FixedUpdate() 
+    {
+        forwardInput = Input.GetAxis("Vertical");
+        horizontalInput = Input.GetAxis("Horizontal");
+        rigidbody.AddForce(transform.right * (speed * horizontalInput), ForceMode.Force);
+        rigidbody.AddForce(transform.forward * (speed * forwardInput), ForceMode.Force);
     }
 
     // Checks that player can't go out of Bounds
