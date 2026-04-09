@@ -1127,6 +1127,71 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TextManager
   scoreText: {fileID: 108300480}
+--- !u!1001 &2754675552490694380
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.252509
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.3851175
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1215547932586203121, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637153987631263384, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_Size.y
+      value: 1.8057297
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637153987631263384, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_Center.y
+      value: 0.85985523
+      objectReference: {fileID: 0}
+    - target: {fileID: 1987686997790199115, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+      propertyPath: m_Name
+      value: Skeleton_110
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
 --- !u!1001 &5840529224447922717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1203,3 +1268,4 @@ SceneRoots:
   - {fileID: 1129120704}
   - {fileID: 465021842}
   - {fileID: 991020172}
+  - {fileID: 2754675552490694380}
