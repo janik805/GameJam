@@ -6,10 +6,11 @@ public class SkeletonController : MonoBehaviour
     private Animator animation;
     private Rigidbody rigidbody;
 
-    private float speed = 1;
+    private float speed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        speed = 10;
         player = GameObject.FindWithTag("Player");
         animation = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
@@ -25,5 +26,8 @@ public class SkeletonController : MonoBehaviour
         Vector3 playerPosition = player.transform.position;
         Vector3 goToPlayer = (playerPosition - transform.position).normalized;
         rigidbody.AddForce(goToPlayer * speed);
+        transform.rotation = Quaternion.LookRotation(goToPlayer);
+
+        animation.SetFloat("speed", 1);
     }
 }
