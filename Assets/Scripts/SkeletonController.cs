@@ -10,7 +10,7 @@ public class SkeletonController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = 10;
+        speed = 25;
         player = GameObject.FindWithTag("Player");
         animation = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
