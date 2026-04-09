@@ -56,7 +56,14 @@ public class PlayerStatsManager : MonoBehaviour
     }
     
     public void TakeDamage(int damage)
-    {
-        health -= damage;
+    {   
+        if (health > damage)
+        {
+            health -= damage;
+        } else
+        {
+            health = 0;
+            GameManager.Instance.GameOver();
+        }
     }
 }
