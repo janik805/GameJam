@@ -24,7 +24,7 @@ public class WaveSpawner : MonoBehaviour
         {
             return;
         }
-        if (readyToCountDown == true)
+        if (readyToCountDown)
         {
             countdown -= Time.deltaTime;
         }

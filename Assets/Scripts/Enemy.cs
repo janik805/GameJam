@@ -14,8 +14,12 @@ public abstract class Enemy : MonoBehaviour
     public void Update()
     {
         //Destroy(gameObject);
-        //waveSpawner.waves[waveSpawner.getCurrentWaveIndex()].enemiesLeft--;
     }
     
     public abstract void Walk();
+
+    public void WaveDeathEvent()
+    {
+        waveSpawner.waves[waveSpawner.getCurrentWaveIndex()].enemiesLeft--;
+    }
 }
