@@ -5,14 +5,17 @@ public class TextManager : MonoBehaviour
 {   
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
-    public TextMeshProUGUI highscoreText;
+    public TextMeshProUGUI highscoreStartText;
+    public TextMeshProUGUI highscoreEndText;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         scoreText.text = "Score:" + PlayerStatsManager.Instance.GetCoins();
         healthText.text = "Health:" + PlayerStatsManager.Instance.GetHealth();
-        highscoreText.text = "Highscore:" + PlayerStatsManager.Instance.GetHighscore();
+        highscoreStartText.text = "Highscore:" + PlayerStatsManager.Instance.GetHighscore();
+        highscoreEndText.text = "Highscore:" + PlayerStatsManager.Instance.GetHighscore();    
     }
 
     // Update is called once per frame
@@ -20,6 +23,7 @@ public class TextManager : MonoBehaviour
     {
         scoreText.text = "Score:" + PlayerStatsManager.Instance.GetCoins();
         healthText.text = "Health:" + PlayerStatsManager.Instance.GetHealth();
-        highscoreText.text = "Highscore:" + PlayerStatsManager.Instance.GetHighscore();
+        highscoreStartText.text = "Highscore:" + PlayerStatsManager.Instance.GetHighscore();
+        highscoreEndText.text = "Highscore:" + PlayerStatsManager.Instance.GetHighscore();    
     }
 }
