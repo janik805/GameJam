@@ -16,6 +16,10 @@ public class SkeletonController : Enemy
     private float attackRange = 3.5f;
     private int healthPoints = 1;
 
+    private AudioSource sound;
+    [SerializeField] private AudioClip punchSound;
+    [SerializeField] private AudioClip deathSound;
+
     private float speed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     new void Start()
@@ -28,6 +32,7 @@ public class SkeletonController : Enemy
         animation = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         InvokeRepeating("Attack", 0f, 1f);
+        sound = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     new void Update()
@@ -61,6 +66,8 @@ public class SkeletonController : Enemy
         if (contact && isAlive)
         {
             animation.SetTrigger("attack");
+            sound.clip = punchSound;
+            sound.Play();
             StartCoroutine(WaitForSlashCoroutine());
         }
     }
@@ -100,6 +107,8 @@ public class SkeletonController : Enemy
     IEnumerator WaitForSkeletonDeath() 
     {
         yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        sound.clip = deathSound;
+        sound.Play();
+        Destroy(gameObject, sound.clip.length);
     }
 }
