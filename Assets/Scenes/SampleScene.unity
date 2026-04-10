@@ -1033,7 +1033,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f92310027f344f881015b90cdf62936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinSpawner
-  Coin: {fileID: 156912873606673016, guid: 9cb7d1e309ec14b45b8c37214d6ffa29, type: 3}
+  objectToSpawn: {fileID: 156912873606673016, guid: 9cb7d1e309ec14b45b8c37214d6ffa29, type: 3}
+  initialSpawnNumber: 10
+  initialSpawnTime: 5
 --- !u!4 &984810531
 Transform:
   m_ObjectHideFlags: 0
@@ -1061,7 +1063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c949fe82afef76f4ca4bcd61e2aa55bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  Enemy: {fileID: 1987686997790199115, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+  objectToSpawn: {fileID: 1987686997790199115, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+  initialSpawnNumber: 10
+  initialSpawnTime: 5
 --- !u!1 &991020169
 GameObject:
   m_ObjectHideFlags: 0

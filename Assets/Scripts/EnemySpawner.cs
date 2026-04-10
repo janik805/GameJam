@@ -1,26 +1,21 @@
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Spawner
 {
-    public GameObject Enemy;
 
-    private float timer; 
-    private float waitTime;
+    void Start()
+    {
+        base.Start();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= waitTime)
-        {
-            SpawnEnemy();
-            timer = 0;
-            waitTime = Random.Range(1, 10);
-        }
-        
+        base.Update();
     }
 
-    public void SpawnEnemy()
+    override 
+    public void Spawn()
     {
         
         float xGrenze = WorldStatsManager.Instance.getXGrenze();
@@ -30,6 +25,6 @@ public class EnemySpawner : MonoBehaviour
         float spawnpointZ = Random.Range(-zGrenze, zGrenze);
 
         Vector3 spawnPoint = new Vector3(spawnpointX, 1, spawnpointZ);
-        Instantiate(Enemy,  spawnPoint, Quaternion.identity);
+        Instantiate(GetObjectToSpawn(),  spawnPoint, Quaternion.identity);
     }
 }
