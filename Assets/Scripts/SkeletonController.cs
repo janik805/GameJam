@@ -13,7 +13,7 @@ public class SkeletonController : Enemy
     private Boolean contact;
     private bool isAlive;
     private int damage = 5;
-    private float attackRange = 2.5f;
+    private float attackRange = 3.5f;
     private int healthPoints = 1;
 
     private float speed;
