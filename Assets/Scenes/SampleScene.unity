@@ -1751,6 +1751,9 @@ MonoBehaviour:
   objectToSpawn: {fileID: 1987686997790199115, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
   initialSpawnNumber: 10
   initialSpawnTime: 5
+  enemies:
+  - {fileID: 9149960250625809461, guid: fed4208e513acca4a9f73ed0dc20e6cb, type: 3}
+  - {fileID: 5065369053962257520, guid: afb2261bba4ecc340903c0f91594db69, type: 3}
 --- !u!1 &991020169
 GameObject:
   m_ObjectHideFlags: 0
