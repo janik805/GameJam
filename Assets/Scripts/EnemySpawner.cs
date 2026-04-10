@@ -23,7 +23,7 @@ public class EnemySpawner : Spawner
         float spawnpointX = Random.Range(-xGrenze, xGrenze);
         float spawnpointZ = Random.Range(-zGrenze, zGrenze);
 
-        Vector3 spawnPoint = new Vector3(spawnpointX, 1, spawnpointZ);
+        Vector3 spawnPoint = new Vector3(spawnpointX, 0.1f, spawnpointZ);
         Instantiate(GetObjectToSpawn(),  spawnPoint, Quaternion.identity);
     }
 }
