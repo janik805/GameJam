@@ -12,9 +12,17 @@ public class WorldStatsManager : MonoBehaviour
     [SerializeField] private int MaxCoinsSpawned;
     
     public GameObject plane;
+    
+    [SerializeField] private float minDistance;
+    
     private float xGrenze;
     private float zGrenze;
     private new Renderer renderer;
+
+    public float getMinDistance()
+    {
+        return minDistance;
+    }
 
     public float getXGrenze()
     {

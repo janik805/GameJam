@@ -28,7 +28,6 @@ public class SkeletonController : Enemy
     // Update is called once per frame
     new void Update()
     {
-        base.Update();
         contact = Vector3.Distance(player.transform.position, transform.position) < attackRange;
     }
 
@@ -41,10 +40,14 @@ public class SkeletonController : Enemy
     public void Walk() 
     {
         Vector3 playerPosition = player.transform.position;
-        Vector3 goToPlayer = (playerPosition - transform.position).normalized;
-        rigidbody.AddForce(goToPlayer * speed);
-        transform.rotation = Quaternion.LookRotation(goToPlayer);
-        animation.SetFloat("speed", 1);
+        float distance = Vector3.Distance(playerPosition, transform.position);
+        if (distance < WorldStatsManager.Instance.getMinDistance())
+        {
+            Vector3 goToPlayer = (playerPosition - transform.position).normalized;
+            rigidbody.AddForce(goToPlayer * speed);
+            transform.rotation = Quaternion.LookRotation(goToPlayer);
+            animation.SetFloat("speed", 1);
+        }
     }
 
     public void Attack()
