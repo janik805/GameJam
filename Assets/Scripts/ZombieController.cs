@@ -1,46 +1,44 @@
-using System;
-using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
-public class SkeletonController : Enemy
+public class ZombieController : Enemy
 {
     private GameObject player;
-    private new Animator animation;
     private new Rigidbody rigidbody;
+    private Animator animation;
     [SerializeField] private ParticleSystem hitParticle;
     [SerializeField] private ParticleSystem getHitParticle;
-    private Boolean contact;
-    private bool isAlive;
-    private int damage = 5;
-    private float attackRange = 3.5f;
-    private int healthPoints = 1;
 
+    private bool contact;
+    private bool isAlive;
     private float speed;
+    private int damage = 10;
+    private int healthPoints = 2;
+    private float attackRange = 3.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    new void Start()
-    {   
-        base.Start();
+    void Start()
+    {
+        speed = 35;
         isAlive = true;
         contact = false;
-        speed = 40;
-        player = GameObject.FindWithTag("Player");
         animation = GetComponent<Animator>();
+        player = GameObject.FindWithTag("Player");
         rigidbody = GetComponent<Rigidbody>();
         InvokeRepeating("Attack", 0f, 1f);
     }
+
     // Update is called once per frame
-    new void Update()
+    void Update()
     {
-        contact = Vector3.Distance(player.transform.position, transform.position) < attackRange;
+        contact = Vector3.Distance(player.transform.position, transform.position) < attackRange;  
     }
 
-    void FixedUpdate()
+    void FixedUpdate() 
     {
         Walk();
     }
 
-    override 
+    override
     public void Walk() 
     {
         Vector3 playerPosition = player.transform.position;
@@ -82,22 +80,23 @@ public class SkeletonController : Enemy
 
     private void ReceiveDamage() 
     {
+        animation.SetTrigger("hit");
         getHitParticle.Play();
         healthPoints--;
         if (healthPoints <= 0) 
         {
-            SkeletonDeath();
+            ZombieDeath();
         }
     }
 
-    private void SkeletonDeath() {
+    private void ZombieDeath() {
         isAlive = false;
         animation.SetBool("dead", true);
-        StartCoroutine(WaitForSkeletonDeath());
+        StartCoroutine(WaitForZombieDeath());
         WaveDeathEvent();
     }
 
-    IEnumerator WaitForSkeletonDeath() 
+    IEnumerator WaitForZombieDeath() 
     {
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);

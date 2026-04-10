@@ -28,6 +28,7 @@ public class ControlCoin : MonoBehaviour
             particle.transform.parent = null;
             sound.clip = clip;
             sound.Play();
+            
             Destroy(gameObject, clip.length);
         }
     }
