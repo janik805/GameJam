@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI gameOverText;
+    public Canvas endText;
+    public Canvas startText;
+    public Canvas gameText;
+    public Canvas pauseText;
     public static GameManager Instance;
     private Boolean gameRunning = false;
     private Boolean restart = false;
@@ -44,13 +47,15 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
+        endText.gameObject.SetActive(true);
         Time.timeScale = 0f; // pause game
         gameRunning = false;
     }
 
     private void StartGame()
     {
+        startText.gameObject.SetActive(false);
+        gameText.gameObject.SetActive(true);
         gameRunning = true;
         Time.timeScale = 1f;
         if (restart) 
