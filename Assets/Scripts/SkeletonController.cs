@@ -51,6 +51,8 @@ public class SkeletonController : Enemy
             rigidbody.AddForce(goToPlayer * speed);
             transform.rotation = Quaternion.LookRotation(goToPlayer);
             animation.SetFloat("speed", 1);
+        } else {
+            animation.SetFloat("speed", 0);
         }
     }
 
