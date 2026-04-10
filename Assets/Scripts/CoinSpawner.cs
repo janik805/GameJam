@@ -2,24 +2,21 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CoinSpawner : MonoBehaviour
+public class CoinSpawner : Spawner
 {
-    public GameObject Coin;
-    private float timer;
-    private float waitTime;
+
+    void Start()
+    {
+        base.Start();
+    }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= waitTime)
-        {
-            SpawnCoin();
-            timer = 0;
-            waitTime = Random.Range(1, 10);
-        }
+        base.Update();
     }
 
-    public void SpawnCoin()
+    override 
+    public void Spawn()
     {
         float xGrenze = WorldStatsManager.Instance.getXGrenze();
         float zGrenze = WorldStatsManager.Instance.getZGrenze();
@@ -29,7 +26,7 @@ public class CoinSpawner : MonoBehaviour
         float spawnpointZ = Random.Range(-zGrenze, zGrenze);
 
         Vector3 spawnPoint = new Vector3(spawnpointX, 1, spawnpointZ);
-        Instantiate(Coin, spawnPoint, Quaternion.identity);
+        Instantiate(GetObjectToSpawn(), spawnPoint, Quaternion.identity);
         WorldStatsManager.Instance.increaseCoinsSpawned();
     }
 }
