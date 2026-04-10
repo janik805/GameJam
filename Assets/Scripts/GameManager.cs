@@ -27,6 +27,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0f; // pauses game
+        startText.gameObject.SetActive(true);
+        pauseText.gameObject.SetActive(false);
+        endText.gameObject.SetActive(false);
+        gameText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
