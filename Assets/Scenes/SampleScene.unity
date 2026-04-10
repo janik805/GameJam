@@ -293,6 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   plane: {fileID: 186432270}
+  hitProjectile: {fileID: 0}
 --- !u!4 &228035160
 Transform:
   m_ObjectHideFlags: 0
@@ -1299,6 +1300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WorldStatsManager
   MaxCoinsSpawned: 5
   plane: {fileID: 186432270}
+  minDistance: 20
 --- !u!114 &1129120707
 MonoBehaviour:
   m_ObjectHideFlags: 0
