@@ -104,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
             if (forwardInput != 0 || horizontalInput != 0)
             {
                 sound.Play();
+                
             }
         }
     }
