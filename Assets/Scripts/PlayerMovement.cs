@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private float zGrenze;
     private Camera playerCam;
     private new Renderer renderer;
+    [SerializeField] private AudioClip walkSound;
+    [SerializeField] private AudioClip punchSound;
+    private AudioSource sound;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         playerCam = Camera.main;
         renderer = plane.GetComponent<Renderer>();
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -94,11 +98,20 @@ public class PlayerMovement : MonoBehaviour
         }
         playerAnim.SetFloat("speed", forwardInput);
         playerAnim.SetFloat("horizontalSpeed", horizontalInput);
+        sound.clip = walkSound;
+        if (!sound.isPlaying)
+        {
+            if (forwardInput != 0 || horizontalInput != 0)
+            {
+                sound.Play();
+            }
+        }
     }
 
     private void AttackEnemy() 
     {
         playerAnim.SetTrigger("attacking");
+        sound.PlayOneShot(punchSound);
         StartCoroutine(TriggerHitBox());
     }
 
