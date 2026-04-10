@@ -81,7 +81,7 @@ public class SkeletonController : Enemy
         if (healthPoints <= 0) 
         {
             Destroy(gameObject);
-            //WaveDeathEvent();
+            WaveDeathEvent();
         }
     }
 }

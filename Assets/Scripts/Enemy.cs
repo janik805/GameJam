@@ -20,6 +20,9 @@ public abstract class Enemy : MonoBehaviour
 
     public void WaveDeathEvent()
     {
-        waveSpawner.waves[waveSpawner.getCurrentWaveIndex()].enemiesLeft--;
+        if (waveSpawner != null)
+        {
+            waveSpawner.waves[waveSpawner.getCurrentWaveIndex()].enemiesLeft--;
+        }
     }
 }
