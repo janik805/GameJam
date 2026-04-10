@@ -8,6 +8,9 @@ public class ZombieController : Enemy
     private new Animator animation;
     [SerializeField] private ParticleSystem hitParticle;
     [SerializeField] private ParticleSystem getHitParticle;
+    [SerializeField] private AudioClip punchSound;
+    [SerializeField] private AudioClip zombieDeathSound;
+    private AudioSource sound;
 
     private bool contact;
     private bool isAlive;
@@ -25,6 +28,7 @@ public class ZombieController : Enemy
         player = GameObject.FindWithTag("Player");
         rigidbody = GetComponent<Rigidbody>();
         InvokeRepeating("Attack", 0f, 1f);
+        sound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +63,8 @@ public class ZombieController : Enemy
         if (contact && isAlive)
         {
             animation.SetTrigger("attack");
+            sound.clip = punchSound;
+            sound.Play();
             StartCoroutine(WaitForSlashCoroutine());
         }
     }
@@ -99,6 +105,8 @@ public class ZombieController : Enemy
     IEnumerator WaitForZombieDeath() 
     {
         yield return new WaitForSeconds(0.5f);
-        Destroy(gameObject);
+        sound.clip = zombieDeathSound;
+        sound.Play();
+        Destroy(gameObject, sound.clip.length);
     }
 }
