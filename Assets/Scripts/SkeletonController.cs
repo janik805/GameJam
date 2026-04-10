@@ -12,6 +12,7 @@ public class SkeletonController : Enemy
     private Boolean contact;
     private int damage = 5;
     private float attackRange = 2.5f;
+    private int healthPoints = 1;
 
     private float speed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -64,5 +65,22 @@ public class SkeletonController : Enemy
         yield return new WaitForSeconds(0.5f);
         PlayerStatsManager.Instance.TakeDamage(damage);
         hitParticle.Play();
+    }
+
+    public void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Enemy") && other.gameObject.activeSelf) 
+        {
+            AddDamage();
+        }
+    }
+
+    private void AddDamage() 
+    {
+        healthPoints--;
+        if (healthPoints <= 0) 
+        {
+            Destroy(gameObject);
+        }
     }
 }

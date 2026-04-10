@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject plane;
+    public GameObject hitProjectile;
     new Rigidbody rigidbody;
     private Animator playerAnim;
     private float horizontalInput;
