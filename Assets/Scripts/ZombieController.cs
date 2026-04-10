@@ -5,7 +5,7 @@ public class ZombieController : Enemy
 {
     private GameObject player;
     private new Rigidbody rigidbody;
-    private Animator animation;
+    private new Animator animation;
     [SerializeField] private ParticleSystem hitParticle;
     [SerializeField] private ParticleSystem getHitParticle;
 
@@ -16,7 +16,7 @@ public class ZombieController : Enemy
     private int healthPoints = 2;
     private float attackRange = 3.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    new void Start()
     {
         speed = 35;
         isAlive = true;
@@ -28,7 +28,7 @@ public class ZombieController : Enemy
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         contact = Vector3.Distance(player.transform.position, transform.position) < attackRange;  
     }
