@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerStatsManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerStatsManager : MonoBehaviour
     [SerializeField] private int speed;
 
     [SerializeField] private int coins;
+    [SerializeField] private int highscore;
 
     private void Awake()
     {
@@ -18,6 +20,11 @@ public class PlayerStatsManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        highscore = PlayerPrefs.GetInt("Highscore", 0);
     }
 
     public int GetCoins()
@@ -65,5 +72,22 @@ public class PlayerStatsManager : MonoBehaviour
             health = 0;
             GameManager.Instance.GameOver();
         }
+    }
+
+    public Boolean SetHighscore()
+    {
+        if (coins > highscore)
+        {
+            highscore = coins;
+            PlayerPrefs.SetInt("Highscore", coins);
+            PlayerPrefs.Save();
+            return true;
+        }
+        return false;
+    }
+
+    public int GetHighscore()
+    {
+        return highscore;
     }
 }

@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        PlayerStatsManager.Instance.SetHighscore();
         endText.gameObject.SetActive(true);
         Time.timeScale = 0f; // pause game
         gameRunning = false;
