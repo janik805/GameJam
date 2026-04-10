@@ -9,7 +9,9 @@ public class SkeletonController : Enemy
     private new Animator animation;
     private new Rigidbody rigidbody;
     [SerializeField] private ParticleSystem hitParticle;
+    [SerializeField] private ParticleSystem getHitParticle;
     private Boolean contact;
+    private bool isAlive;
     private int damage = 5;
     private float attackRange = 2.5f;
     private int healthPoints = 1;
@@ -19,6 +21,7 @@ public class SkeletonController : Enemy
     new void Start()
     {   
         base.Start();
+        isAlive = true;
         contact = false;
         speed = 25;
         player = GameObject.FindWithTag("Player");
@@ -53,7 +56,7 @@ public class SkeletonController : Enemy
 
     public void Attack()
     {
-        if (contact)
+        if (contact && isAlive)
         {
             animation.SetTrigger("attack");
             StartCoroutine(WaitForSlashCoroutine());
@@ -71,17 +74,30 @@ public class SkeletonController : Enemy
     {
         if(other.CompareTag("Projectile") && other.gameObject.activeSelf) 
         {
-            AddDamage();
+            ReceiveDamage();
         }
     }
 
-    private void AddDamage() 
+    private void ReceiveDamage() 
     {
+        getHitParticle.Play();
         healthPoints--;
         if (healthPoints <= 0) 
         {
-            Destroy(gameObject);
-            WaveDeathEvent();
+            SkeletonDeath();
         }
+    }
+
+    private void SkeletonDeath() {
+        isAlive = false;
+        animation.SetBool("dead", true);
+        StartCoroutine(WaitForSkeletonDeath());
+        WaveDeathEvent();
+    }
+
+    IEnumerator WaitForSkeletonDeath() 
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }

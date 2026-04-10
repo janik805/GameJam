@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   plane: {fileID: 186432270}
-  hitProjectile: {fileID: 0}
+  hitProjectile: {fileID: 1550675412}
 --- !u!4 &228035160
 Transform:
   m_ObjectHideFlags: 0
@@ -1481,8 +1481,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2.0000262, z: 0.80067325}
-  m_Center: {x: 0, y: -0.50001365, z: -0.07159281}
+  m_Size: {x: 0.80237573, y: 2.0000262, z: 0.80067325}
+  m_Center: {x: -0.09881214, y: -0.5000136, z: -0.07159282}
 --- !u!1 &1626452729
 GameObject:
   m_ObjectHideFlags: 0
