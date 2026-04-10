@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.anyKeyDown)
             {
                 gameOver = true;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
