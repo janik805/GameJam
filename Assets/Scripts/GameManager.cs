@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -79,5 +80,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         gameRunning = false;
         restart = false;
+    }
+
+    public void Exit()
+    {
+        #if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+        #else
+            Application.Quit();
+        #endif
     }
 }
