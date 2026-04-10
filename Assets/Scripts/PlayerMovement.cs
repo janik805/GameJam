@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -89,10 +90,21 @@ public class PlayerMovement : MonoBehaviour
     private void AnimatePlayer() 
     {
         if(Input.GetKeyDown(KeyCode.Space)) {
-            playerAnim.SetTrigger("attacking");
+            AttackEnemy();
         }
         playerAnim.SetFloat("speed", forwardInput);
         playerAnim.SetFloat("horizontalSpeed", horizontalInput);
+    }
 
+    private void AttackEnemy() 
+    {
+        playerAnim.SetTrigger("attacking");
+        StartCoroutine(TriggerHitBox());
+    }
+
+    private IEnumerator TriggerHitBox() {
+        hitProjectile.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        hitProjectile.SetActive(false);
     }
 }
