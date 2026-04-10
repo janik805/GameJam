@@ -12,7 +12,9 @@ Reynolds Adjei: Sound Design & Back End (Spawning, Sounds, Stats etc.)
 Ryota Kariya: Particles, Animation & Back End (Animation, Particles, Enemies etc.)
 
 ## Screenshots
-<img width="1918" height="937" alt="image" src="https://github.com/user-attachments/assets/655dda65-5b00-4eb4-b65b-70a83a5c32cf" />
-<img width="1915" height="937" alt="image" src="https://github.com/user-attachments/assets/60877017-8f6d-4184-9f90-8ed7af0c3fd4" />
-<img width="1917" height="941" alt="image" src="https://github.com/user-attachments/assets/1643736b-f322-4262-a234-390ae03608de" />
+<img width="959" height="452" alt="image" src="https://github.com/user-attachments/assets/19078508-bbc7-4765-ac10-f8a9dcdd9440" />
+<img width="959" height="454" alt="image" src="https://github.com/user-attachments/assets/bcaeb11f-d0c7-48d1-81ba-0a96cd017767" />
+<img width="959" height="454" alt="image" src="https://github.com/user-attachments/assets/af8d364b-0fea-442f-8f6f-27c2e25ec5c7" />
+<img width="959" height="452" alt="image" src="https://github.com/user-attachments/assets/c6aef095-34f3-4278-b118-913a090ce365" />
+
 
