@@ -11,7 +11,11 @@ Move: WASD
 Look around: Mouse
 
 Hit: Space Bar
-## The Team
+
+## Installation
+Use Unity to play the game
+
+## Credits
 Janik Daub : UI & Back End (UI, Damage, Start/Pause/Restart etc.)
 
 Reynolds Adjei: Sound Design & Back End (Spawning, Sounds, Stats etc.)
