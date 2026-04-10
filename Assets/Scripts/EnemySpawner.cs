@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : Spawner
 {
+    [SerializeField] private Enemy[] enemies;
     new void Start()
     {
         base.Start();
@@ -24,6 +25,7 @@ public class EnemySpawner : Spawner
         float spawnpointZ = Random.Range(-zGrenze, zGrenze);
 
         Vector3 spawnPoint = new Vector3(spawnpointX, 0.1f, spawnpointZ);
-        Instantiate(GetObjectToSpawn(),  spawnPoint, Quaternion.identity);
+        Enemy enemy = enemies[Random.Range(0, enemies.Length)];
+        Instantiate(enemy,  spawnPoint, Quaternion.identity);
     }
 }
