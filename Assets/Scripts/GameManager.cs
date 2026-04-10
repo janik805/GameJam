@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         startText.gameObject.SetActive(false);
+        pauseText.gameObject.SetActive(false);
         gameText.gameObject.SetActive(true);
         gameRunning = true;
         Time.timeScale = 1f;
@@ -69,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     private void PauseGame()
     {
+        pauseText.gameObject.SetActive(true);
         Time.timeScale = 0f;
         gameRunning = false;
         restart = false;
