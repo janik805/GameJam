@@ -13,6 +13,8 @@ Look around: Mouse
 Hit: Space Bar
 
 ## Installation
+You can find the Excecutable in the Application folder
+
 Use Unity to play the game
 
 ## Credits
