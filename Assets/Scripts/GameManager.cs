@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -9,7 +8,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI gameOverText;
     public static GameManager Instance;
     private Boolean gameRunning = false;
-    private Boolean gameStarted = false;
+    private Boolean restart = false;
 
     private void Awake()
     {
@@ -24,36 +23,49 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Time.timeScale = 0f; // Zeit wird beim Start gestoppt
+        Time.timeScale = 0f; // pauses game
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Startet Spiel mit der Leertaste
-        if (!gameRunning && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            StartGame();
-        }
-    }
-
-    private void StartGame()
-    {
-        gameRunning = true;
-        Time.timeScale = 1f;
-        if (gameStarted) 
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        } else
-        {
-            gameStarted = true;
+            // Start or pause game
+            if (!gameRunning)
+            {
+                StartGame();
+            } else
+            {
+                PauseGame();
+            }
         }
     }
 
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
-        Time.timeScale = 0f; // Stops game
+        Time.timeScale = 0f; // pause game
         gameRunning = false;
+    }
+
+    private void StartGame()
+    {
+        gameRunning = true;
+        Time.timeScale = 1f;
+        if (restart) 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        } else
+        {
+            restart = true;
+        }
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0f;
+        gameRunning = false;
+        restart = false;
     }
 }
