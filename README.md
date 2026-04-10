@@ -4,6 +4,13 @@ DesertSlayer is a fast-paced casual action game for Windows. Battle through the 
 Survive: Fight off hordes of skeletons or dodge their attacks.
 Collect: Grab coins to boost your score.
 Compete: Push your limits to reach the ultimate high score.
+
+## The Controls
+Move: WASD
+
+Look around: Mouse
+
+Hit: Space Bar
 ## The Team
 Janik Daub : UI & Back End (UI, Damage, Start/Pause/Restart etc.)
 
