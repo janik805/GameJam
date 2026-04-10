@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip walkSound;
     [SerializeField] private AudioClip punchSound;
     private AudioSource sound;
+    private float time=0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
         AnimatePlayer();
         Ray ray = playerCam.ScreenPointToRay(Input.mousePosition);
 
@@ -111,9 +113,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void AttackEnemy() 
     {
-        playerAnim.SetTrigger("attacking");
-        sound.PlayOneShot(punchSound);
-        StartCoroutine(TriggerHitBox());
+        if (time>0.5f)
+        {
+            playerAnim.SetTrigger("attacking");
+            sound.PlayOneShot(punchSound);
+            StartCoroutine(TriggerHitBox());
+            time = 0;
+        }
     }
 
     private IEnumerator TriggerHitBox() {
